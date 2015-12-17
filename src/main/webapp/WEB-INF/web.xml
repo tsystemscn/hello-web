@@ -4,4 +4,15 @@
 
 <web-app>
     <display-name>Hello Web Application</display-name>
+
+    <servlet>
+        <servlet-name>Hello Servlet</servlet-name>
+        <servlet-class>com.tsystems.demo.App</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Hello Servlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
 </web-app>
