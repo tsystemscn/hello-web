@@ -28,7 +28,15 @@ public class App extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
+        out.println("<!DOCTYPE html>");
+        out.println("<html lang=\"en\">");
+        out.println("<head>");
+        out.println("<title>Index</title>");
+        out.println("</head>");
+        out.println("<body>");
         out.println("<h1>Hello World.</h1>");
+        out.println("</body>");
+        out.println("</html>");
     }
 
     public static void main( String[] args ) {
