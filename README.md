@@ -24,15 +24,6 @@ or __Copy from the exist hello-app project and change some configuration__
 
 3. Create a `webapp` folder in `src/main` folder, and create an `WEB-INF` folder in the `webapp` folder, then add a `web.xml` file in the `WEB-INF` folder.
 
-
-    <!DOCTYPE web-app PUBLIC
-     "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-     "http://java.sun.com/dtd/web-app_2_3.dtd" >
-    <web-app>
-        <display-name>Hello Web Application</display-name>
-    </web-app>
-
-
 4. Add index.html to src/main/webapp(used for test)
 
 5. Import the exist maven project `hello-web`.
@@ -73,12 +64,30 @@ extends `HttpServlet` and override `doGet()` method.
 Mapping the URL with related java class.
 
     <servlet>
-        <servlet-name>Hello Servlet</servlet-name>
+        <servlet-name>App Servlet</servlet-name>
         <servlet-class>com.tsystems.demo.App</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Hello Servlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>App Servlet</servlet-name>
+        <url-pattern>/app</url-pattern>
     </servlet-mapping>
 
+## Improve the code
+
+### Use @WebServlet annotation to avoid config servlet mapping
+
+    import javax.servlet.annotation.WebServlet;
+    
+    @WebServlet("/hello")
+
+### Use JSP page to avoid write so many html code in java method
+
+Add a `hello.jsp` in `src/main/webapp/WEB-INF/jsp`
+
+    <h1>Hello: <%=request.getAttribute("name") %></h1>
+
+Forward to jsp page to show the content.
+
+    request.setAttribute("name", message);
+    request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response); 

@@ -27,6 +27,14 @@ public class App extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        LOG.info("Inside App.doGet()");
+        Object paramName = request.getParameter("name");
+        String message = "Servlet"; // default param
+        if (paramName != null) {
+            message = (String)paramName;
+            LOG.info("Parameter name: " + message);
+        }
+
         PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
         out.println("<html lang=\"en\">");
@@ -34,7 +42,8 @@ public class App extends HttpServlet {
         out.println("<title>Index</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Hello World.</h1>");
+        // call the sayHi method to get the result
+        out.println("<h1>" + new App().sayHi(message) +"</h1>");
         out.println("</body>");
         out.println("</html>");
     }
