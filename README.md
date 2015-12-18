@@ -92,9 +92,9 @@ Mapping the URL with related java class.
 
 Add a `hello.jsp` in `src/main/webapp/WEB-INF/jsp`
 
-    <h1>Hello: <%=request.getAttribute("name") %></h1>
+    <h1>Hello: <%=request.getAttribute("message") %></h1>
 
 Forward to jsp page to show the content.
 
-    request.setAttribute("name", message);
+    request.setAttribute("message", message);
     request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response); 

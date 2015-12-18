@@ -29,7 +29,7 @@ public class HelloServlet extends HttpServlet {
             LOG.info("Parameter name: " + message);
         }
         // use jsp to show the content(needn't write so many html in java code)
-        request.setAttribute("name", message);
+        request.setAttribute("message", message);
         request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response);
     }
 }
